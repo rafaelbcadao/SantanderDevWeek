@@ -1,0 +1,18 @@
+#Contexto: 
+Você é um cientista de dados de uma operadora de plano de saúde e recebeu a tarefa de verificar as 10 contas que tiveram maior custos no mês. Para isso deverá ser lido uma base onde constam número de usuário, valor da conta e número da conta.
+Solução proposta
+import pandas as pd
+
+# Carrega o arquivo CSV em um DataFrame
+df = pd.read_csv('dados.csv')
+
+# Ordena o DataFrame com base no valor em ordem decrescente
+df_ordenado = df.sort_values(by='Valor', ascending=False)
+
+# Seleciona os top 10 registros
+top_10 = df_ordenado.head(10)
+
+# Exibe os top 10 registros
+print("Top 10 Registros:")
+for i, row in top_10.iterrows():
+    print(f"{i+1}. Nome: {row['Nome de Usuário']}, Número da Conta: {row['Número da Conta']}, Valor: R${row['Valor']:.2f}")
